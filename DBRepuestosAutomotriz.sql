@@ -50,59 +50,6 @@ references Empleados(id_empleado) on delete cascade,
 references Repuestos(id_repuesto) on delete cascade
 );
 
--- REGISTROS
-
--- INSERTAR PROVEEDORES
-insert into Proveedores(nombre_proveedor, telefono_proveedor, direccion, email_proveedor) values
-('AutoPartes GT', 22334455, 'Zona 1, Guatemala', 'contacto@autopartesgt.com'),
-('Repuestos Centro', 33445566, 'Zona 5, Guatemala', 'ventas@repuestoscentro.com'),
-('Motores y Más', 44556677, 'Zona 7, Guatemala', 'info@motoresymas.com'),
-('Distribuidora El Motor', 55667788, 'Zona 10, Guatemala', 'distribuidora@elmotor.com'),
-('Importadora Automotriz', 66778899, 'Zona 12, Guatemala', 'importadora@auto.com'),
-('Repuestos Premium', 77889900, 'Zona 14, Guatemala', 'premium@repuestos.com'),
-('AutoSuministros', 88990011, 'Zona 3, Guatemala', 'autosum@correo.com'),
-('Mega Repuestos', 99001122, 'Mixco, Guatemala', 'mega@repuestos.com'),
-('Todo Motor', 22113344, 'Villa Nueva, Guatemala', 'todomotor@correo.com'),
-('Repuestos Express', 33224455, 'Amatitlán, Guatemala', 'express@repuestos.com');
-
--- INSERTAR EMPLEADOS
-insert into Empleados(nombre_empleado, apellido_empleado, puesto_empleado, email_empleado) values
-('Carlos', 'Ramirez', 'Vendedor', 'carlos@empresa.com'),
-('Ana', 'Lopez', 'Cajera', 'ana@empresa.com'),
-('Luis', 'Hernandez', 'Administrador', 'luis@empresa.com'),
-('Maria', 'Gomez', 'Vendedor', 'maria@empresa.com'),
-('Jorge', 'Castillo', 'Supervisor', 'jorge@empresa.com'),
-('Sofia', 'Morales', 'Cajera', 'sofia@empresa.com'),
-('Pedro', 'Reyes', 'Vendedor', 'pedro@empresa.com'),
-('Laura', 'Mendez', 'Inventario', 'laura@empresa.com'),
-('Miguel', 'Torres', 'Supervisor', 'miguel@empresa.com'),
-('Elena', 'Vasquez', 'Vendedor', 'elena@empresa.com');
-
--- INSERTAR REPUESTOS
-insert into Repuestos(nombre_repuesto, categoria_repuesto, precio_compra, precio_venta, id_proveedor) values
-('Filtro de Aceite', 'Filtros', 30.00, 50.00, 1),
-('Bujías', 'Encendido', 15.00, 25.00, 2),
-('Pastillas de Freno', 'Frenos', 80.00, 120.00, 3),
-('Batería', 'Eléctrico', 350.00, 500.00, 4),
-('Radiador', 'Refrigeración', 400.00, 600.00, 5),
-('Aceite 10W40', 'Lubricantes', 90.00, 140.00, 6),
-('Amortiguadores', 'Suspensión', 250.00, 380.00, 7),
-('Correa de Tiempo', 'Motor', 120.00, 180.00, 8),
-('Sensor de Oxígeno', 'Sensores', 200.00, 320.00, 9),
-('Alternador', 'Eléctrico', 600.00, 850.00, 10);
-
--- INSERTAR VENTAS
-insert into Ventas(fecha_venta, cantidad, total, id_empleado, id_repuesto) values
-('2026-01-10', 2, 100.00, 1, 1),
-('2026-01-11', 4, 100.00, 2, 2),
-('2026-01-12', 1, 120.00, 3, 3),
-('2026-01-13', 1, 500.00, 4, 4),
-('2026-01-14', 2, 1200.00, 5, 5),
-('2026-01-15', 3, 420.00, 6, 6),
-('2026-01-16', 2, 760.00, 7, 7),
-('2026-01-17', 1, 180.00, 8, 8),
-('2026-01-18', 2, 640.00, 9, 9),
-('2026-01-19', 1, 850.00, 10, 10);
 
 -- PROCEDIMIENTOS ALMACENADOS
 
@@ -111,7 +58,7 @@ insert into Ventas(fecha_venta, cantidad, total, id_empleado, id_repuesto) value
 delimiter $$
 create procedure sp_empleados_create(
 	in p_nombre varchar(60),
-    in p_apellidon varchar(60),
+    in p_apellido varchar(60),
     in p_puesto varchar(20),
     in p_email varchar(100)
 )
@@ -346,3 +293,54 @@ begin
 end$$
 delimiter ;
 
+
+-- INSERTAR PROVEEDORES
+CALL sp_proveedores_create('AutoPartes GT', 22334455, 'Zona 1, Guatemala', 'contacto@autopartesgt.com');
+CALL sp_proveedores_create('Repuestos Centro', 33445566, 'Zona 5, Guatemala', 'ventas@repuestoscentro.com');
+CALL sp_proveedores_create('Motores y Más', 44556677, 'Zona 7, Guatemala', 'info@motoresymas.com');
+CALL sp_proveedores_create('Distribuidora El Motor', 55667788, 'Zona 10, Guatemala', 'distribuidora@elmotor.com');
+CALL sp_proveedores_create('Importadora Automotriz', 66778899, 'Zona 12, Guatemala', 'importadora@auto.com');
+CALL sp_proveedores_create('Repuestos Premium', 77889900, 'Zona 14, Guatemala', 'premium@repuestos.com');
+CALL sp_proveedores_create('AutoSuministros', 88990011, 'Zona 3, Guatemala', 'autosum@correo.com');
+CALL sp_proveedores_create('Mega Repuestos', 99001122, 'Mixco, Guatemala', 'mega@repuestos.com');
+CALL sp_proveedores_create('Todo Motor', 22113344, 'Villa Nueva, Guatemala', 'todomotor@correo.com');
+CALL sp_proveedores_create('Repuestos Express', 33224455, 'Amatitlán, Guatemala', 'express@repuestos.com');
+
+
+-- INSERTAR EMPLEADOS
+CALL sp_empleados_create('Carlos', 'Ramirez', 'Vendedor', 'carlos@empresa.com');
+CALL sp_empleados_create('Ana', 'Lopez', 'Cajera', 'ana@empresa.com');
+CALL sp_empleados_create('Luis', 'Hernandez', 'Administrador', 'luis@empresa.com');
+CALL sp_empleados_create('Maria', 'Gomez', 'Vendedor', 'maria@empresa.com');
+CALL sp_empleados_create('Jorge', 'Castillo', 'Supervisor', 'jorge@empresa.com');
+CALL sp_empleados_create('Sofia', 'Morales', 'Cajera', 'sofia@empresa.com');
+CALL sp_empleados_create('Pedro', 'Reyes', 'Vendedor', 'pedro@empresa.com');
+CALL sp_empleados_create('Laura', 'Mendez', 'Inventario', 'laura@empresa.com');
+CALL sp_empleados_create('Miguel', 'Torres', 'Supervisor', 'miguel@empresa.com');
+CALL sp_empleados_create('Elena', 'Vasquez', 'Vendedor', 'elena@empresa.com');
+
+
+-- INSERTAR REPUESTOS
+CALL sp_repuestos_create('Filtro de Aceite', 'Filtros', 30.00, 50.00, 1);
+CALL sp_repuestos_create('Bujías', 'Encendido', 15.00, 25.00, 2);
+CALL sp_repuestos_create('Pastillas de Freno', 'Frenos', 80.00, 120.00, 3);
+CALL sp_repuestos_create('Batería', 'Eléctrico', 350.00, 500.00, 4);
+CALL sp_repuestos_create('Radiador', 'Refrigeración', 400.00, 600.00, 5);
+CALL sp_repuestos_create('Aceite 10W40', 'Lubricantes', 90.00, 140.00, 6);
+CALL sp_repuestos_create('Amortiguadores', 'Suspensión', 250.00, 380.00, 7);
+CALL sp_repuestos_create('Correa de Tiempo', 'Motor', 120.00, 180.00, 8);
+CALL sp_repuestos_create('Sensor de Oxígeno', 'Sensores', 200.00, 320.00, 9);
+CALL sp_repuestos_create('Alternador', 'Eléctrico', 600.00, 850.00, 10);
+
+
+-- INSERTAR VENTAS
+CALL sp_ventas_create('2026-01-10', 2, 100.00, 1, 1);
+CALL sp_ventas_create('2026-01-11', 4, 100.00, 2, 2);
+CALL sp_ventas_create('2026-01-12', 1, 120.00, 3, 3);
+CALL sp_ventas_create('2026-01-13', 1, 500.00, 4, 4);
+CALL sp_ventas_create('2026-01-14', 2, 1200.00, 5, 5);
+CALL sp_ventas_create('2026-01-15', 3, 420.00, 6, 6);
+CALL sp_ventas_create('2026-01-16', 2, 760.00, 7, 7);
+CALL sp_ventas_create('2026-01-17', 1, 180.00, 8, 8);
+CALL sp_ventas_create('2026-01-18', 2, 640.00, 9, 9);
+CALL sp_ventas_create('2026-01-19', 1, 850.00, 10, 10);

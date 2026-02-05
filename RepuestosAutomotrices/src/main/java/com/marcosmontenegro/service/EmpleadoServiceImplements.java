@@ -31,13 +31,26 @@ public class EmpleadoServiceImplements implements EmpleadoService{
         return empleadoRepository.save(empleado);
     }
 
+
     @Override
-    public Empleado updateEmpleado(Integer id, Empleado empleado) {
-        return null;
+    public Empleado updateEmpleado(Integer id, Empleado empleado){
+        Empleado existingEmpleado = empleadoRepository.findById(id).orElseThrow(() -> new RuntimeException("El empleado no existe"));
+
+            existingEmpleado.setNombreEmpleado(empleado.getNombreEmpleado());
+            existingEmpleado.setApellidoEmpleado(empleado.getApellidoEmpleado());
+            existingEmpleado.setPuestoEmpleado(empleado.getPuestoEmpleado());
+            existingEmpleado.setEmailEmpleado(empleado.getEmailEmpleado());
+
+            return empleadoRepository.save(existingEmpleado);
+    
     }
+
 
     @Override
     public void deleteEmpleado(Integer id) {
+        if (!empleadoRepository.existsById(id)) {
+         throw new RuntimeException("Empleado no existe");
+        }
         empleadoRepository.deleteById(id);
     }
 }
