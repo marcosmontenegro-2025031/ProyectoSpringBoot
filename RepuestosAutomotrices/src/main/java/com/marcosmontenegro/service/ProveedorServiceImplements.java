@@ -20,18 +20,56 @@ public class ProveedorServiceImplements implements ProveedorService{
     public List<Proveedor> getAllProveedores(){return proveedorRepository.findAll();}
 
     @Override
-    public Proveedor getProveedoresById(Integer id){return proveedorRepository.findById().orElse(null);}
+    public Proveedor getProveedorById(Integer id){return proveedorRepository.findById(id).orElse(null);}
 
     @Override
     public Proveedor saveProveedor(Proveedor proveedor) throws RuntimeException {
-        return proveedorRepository.save(proveedor);
+        try {
+            if (proveedor == null || proveedor.getNombreProveedor().isBlank()|| proveedor.getTelefonoProveedor() == null || proveedor.getDireccionProveedor().isBlank() || proveedor.getEmailProveedor().isBlank()){
+                throw new IllegalArgumentException("Todos Los campos son obligatorios");
+            }
+
+            if (!proveedor.getEmailProveedor().contains("@gmail.com") || proveedor.getEmailProveedor().contains("@yahoo.com")
+                    || proveedor.getEmailProveedor().contains("@outlook.com") || proveedor.getEmailProveedor().contains("@icloud.com") || proveedor.getEmailProveedor().contains("@hotmail.com")){
+                throw new IllegalArgumentException("El correo electronico debe tener un dominio como @gmail.com, @yahoo.com, @outlook.com, @icloud.com y @hotmail.com");
+            }
+
+            if (proveedorRepository.existByNombreProveedorAndtelefonoProveedorAnddireccionProveedorAndemailProveedor(
+                    proveedor.getNombreProveedor() ,
+                    proveedor.getTelefonoProveedor(),
+                    proveedor.getDireccionProveedor(),
+                    proveedor.getEmailProveedor()
+            )){
+                throw new RuntimeException("El proveedor ya existe");
+            }
+            return proveedorRepository.save(proveedor);
+        }catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     @Override
     public Proveedor updateProveedor(Integer id, Proveedor proveedor){
-        Proveedor existingProveedor = proveedorRepository.findById(id).orElseThrow(() -> new RuntimeException("El proveedor no existe"));
+        try {
+            if (!proveedor.getEmailProveedor().contains("@gmail.com") || proveedor.getEmailProveedor().contains("@yahoo.com")
+                    || proveedor.getEmailProveedor().contains("@outlook.com") || proveedor.getEmailProveedor().contains("@icloud.com") || proveedor.getEmailProveedor().contains("@hotmail.com")){
+                throw new IllegalArgumentException("El correo electronico debe tener un dominio como @gmail.com, @yahoo.com, @outlook.com, @icloud.com y @hotmail.com");
+            }
+            return proveedorRepository.save(proveedor);
+        } catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+        }
 
-        existingProveedor.set
+    @Override
+    public void deleteProveedor(Integer id) {
+        try {
+            if (id == null || id == 0){
+                throw new RuntimeException("El id esta vacío o es igual a 0");
+            }
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
 }

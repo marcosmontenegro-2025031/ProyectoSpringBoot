@@ -35,12 +35,12 @@ public class Proveedor {
         this.idProveedor = idProveedor;
     }
 
-    public String getNombreEmpleado() {
-        return nombreEmpleado;
+    public String getNombreProveedor() {
+        return nombreProveedor;
     }
 
-    public void setNombreEmpleado(String nombreEmpleado) {
-        this.nombreEmpleado = nombreEmpleado;
+    public void setNombreProveedor(String nombreEmpleado) {
+        this.nombreProveedor = nombreEmpleado;
     }
 
     public Integer getTelefonoProveedor() {
