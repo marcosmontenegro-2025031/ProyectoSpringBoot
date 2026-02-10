@@ -34,7 +34,7 @@ public class ProveedorServiceImplements implements ProveedorService{
                 throw new IllegalArgumentException("El correo electronico debe tener un dominio como @gmail.com, @yahoo.com, @outlook.com, @icloud.com y @hotmail.com");
             }
 
-            if (proveedorRepository.existByNombreProveedorAndtelefonoProveedorAnddireccionProveedorAndemailProveedor(
+            if (proveedorRepository.existsByNombreProveedorAndTelefonoProveedorAndDireccionProveedorAndEmailProveedor(
                     proveedor.getNombreProveedor() ,
                     proveedor.getTelefonoProveedor(),
                     proveedor.getDireccionProveedor(),
@@ -51,12 +51,12 @@ public class ProveedorServiceImplements implements ProveedorService{
     @Override
     public Proveedor updateProveedor(Integer id, Proveedor proveedor){
         try {
-            if (!proveedor.getEmailProveedor().contains("@gmail.com") || proveedor.getEmailProveedor().contains("@yahoo.com")
-                    || proveedor.getEmailProveedor().contains("@outlook.com") || proveedor.getEmailProveedor().contains("@icloud.com") || proveedor.getEmailProveedor().contains("@hotmail.com")){
+            if (!(proveedor.getEmailProveedor().contains("@gmail.com") || proveedor.getEmailProveedor().contains("@yahoo.com")
+                    || proveedor.getEmailProveedor().contains("@outlook.com") || proveedor.getEmailProveedor().contains("@icloud.com") || proveedor.getEmailProveedor().contains("@hotmail.com"))){
                 throw new IllegalArgumentException("El correo electronico debe tener un dominio como @gmail.com, @yahoo.com, @outlook.com, @icloud.com y @hotmail.com");
             }
             return proveedorRepository.save(proveedor);
-        } catch (Exception e){
+        } catch (RuntimeException e){
             throw new RuntimeException(e.getMessage());
         }
         }
@@ -67,6 +67,11 @@ public class ProveedorServiceImplements implements ProveedorService{
             if (id == null || id == 0){
                 throw new RuntimeException("El id esta vacío o es igual a 0");
             }
+
+            if (!proveedorRepository.existsById(id)) {
+                throw new RuntimeException("El id no existe");
+            }
+            proveedorRepository.deleteById(id);
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }
