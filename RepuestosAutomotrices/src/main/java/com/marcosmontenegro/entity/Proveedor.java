@@ -13,7 +13,7 @@ public class Proveedor {
     private Integer idProveedor;
 
     @Column(name = "nombre_proveedor")
-    private String nombreEmpleado;
+    private String nombreProveedor;
 
     @Column(name = "telefono_proveedor")
     private Integer telefonoProveedor;
