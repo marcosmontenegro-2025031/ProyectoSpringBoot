@@ -347,3 +347,52 @@ begin
 end$$
 delimiter ;
 
+-- EMPLEADOS
+call sp_empleados_create('Carlos', 'Ramirez', 'Vendedor', 'carlos@empresa.com');
+call sp_empleados_create('Ana', 'Lopez', 'Cajera', 'ana@empresa.com');
+call sp_empleados_create('Luis', 'Hernandez', 'Administrador', 'luis@empresa.com');
+call sp_empleados_create('Maria', 'Gomez', 'Vendedor', 'maria@empresa.com');
+call sp_empleados_create('Jorge', 'Castillo', 'Supervisor', 'jorge@empresa.com');
+call sp_empleados_create('Sofia', 'Morales', 'Cajera', 'sofia@empresa.com');
+call sp_empleados_create('Pedro', 'Reyes', 'Vendedor', 'pedro@empresa.com');
+call sp_empleados_create('Laura', 'Mendez', 'Inventario', 'laura@empresa.com');
+call sp_empleados_create('Miguel', 'Torres', 'Supervisor', 'miguel@empresa.com');
+call sp_empleados_create('Elena', 'Vasquez', 'Vendedor', 'elena@empresa.com');
+
+
+-- PROVEEDORES 
+call sp_proveedores_create('AutoPartes GT', 22334455, 'Zona 1, Guatemala', 'contacto@autopartesgt.com');
+call sp_proveedores_create('Repuestos Centro', 33445566, 'Zona 5, Guatemala', 'ventas@repuestoscentro.com');
+call sp_proveedores_create('Motores y Más', 44556677, 'Zona 7, Guatemala', 'info@motoresymas.com');
+call sp_proveedores_create('Distribuidora El Motor', 55667788, 'Zona 10, Guatemala', 'distribuidora@elmotor.com');
+call sp_proveedores_create('Importadora Automotriz', 66778899, 'Zona 12, Guatemala', 'importadora@auto.com');
+call sp_proveedores_create('Repuestos Premium', 77889900, 'Zona 14, Guatemala', 'premium@repuestos.com');
+call sp_proveedores_create('AutoSuministros', 88990011, 'Zona 3, Guatemala', 'autosum@correo.com');
+call sp_proveedores_create('Mega Repuestos', 99001122, 'Mixco, Guatemala', 'mega@repuestos.com');
+call sp_proveedores_create('Todo Motor', 22113344, 'Villa Nueva, Guatemala', 'todomotor@correo.com');
+call sp_proveedores_create('Repuestos Express', 33224455, 'Amatitlán, Guatemala', 'express@repuestos.com');
+
+-- REPUESTOS
+call sp_repuestos_create('Filtro de Aceite', 'Filtros', 30.00, 50.00, 1);
+call sp_repuestos_create('Bujías', 'Encendido', 15.00, 25.00, 2);
+call sp_repuestos_create('Pastillas de Freno', 'Frenos', 80.00, 120.00, 3);
+call sp_repuestos_create('Batería', 'Eléctrico', 350.00, 500.00, 4);
+call sp_repuestos_create('Radiador', 'Refrigeración', 400.00, 600.00, 5);
+call sp_repuestos_create('Aceite 10W40', 'Lubricantes', 90.00, 140.00, 6);
+call sp_repuestos_create('Amortiguadores', 'Suspensión', 250.00, 380.00, 7);
+call sp_repuestos_create('Correa de Tiempo', 'Motor', 120.00, 180.00, 8);
+call sp_repuestos_create('Sensor de Oxígeno', 'Sensores', 200.00, 320.00, 9);
+call sp_repuestos_create('Alternador', 'Eléctrico', 600.00, 850.00, 10);
+
+-- VENTAS
+call sp_ventas_create('2026-01-10', 2, 100.00, 1, 1);
+call sp_ventas_create('2026-01-11', 4, 100.00, 2, 2);
+call sp_ventas_create('2026-01-12', 1, 120.00, 3, 3);
+call sp_ventas_create('2026-01-13', 1, 500.00, 4, 4);
+call sp_ventas_create('2026-01-14', 2, 1200.00, 5, 5);
+call sp_ventas_create('2026-01-15', 3, 420.00, 6, 6);
+call sp_ventas_create('2026-01-16', 2, 760.00, 7, 7);
+call sp_ventas_create('2026-01-17', 1, 180.00, 8, 8);
+call sp_ventas_create('2026-01-18', 2, 640.00, 9, 9);
+call sp_ventas_create('2026-01-19', 1, 850.00, 10, 10);
+
