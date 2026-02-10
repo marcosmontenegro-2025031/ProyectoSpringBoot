@@ -7,11 +7,11 @@ import java.util.List;
 
 @Service
 public interface ProveedorService {
-    List<Proveedor> getAllProveedor();
-    Proveedor getProveedorById(Integer id);
-    Proveedor saveProveedor(Proveedor proveedor) throws RuntimeException;
-    Proveedor updateProveedor(Integer id, Proveedor proveedor);
-    void deleteProveedor(Integer id);
+    List<Proveedor> getAllProveedores();
+    Proveedor getProveedoresById(Integer id);
+    Proveedor saveProveedores(Proveedor proveedor) throws RuntimeException;
+    Proveedor updateProveedores(Integer id, Proveedor proveedor);
+    void deleteProveedores(Integer id);
 
-    
+
 }
