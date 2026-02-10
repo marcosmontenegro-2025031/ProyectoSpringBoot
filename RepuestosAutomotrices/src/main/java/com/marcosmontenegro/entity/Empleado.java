@@ -1,4 +1,4 @@
-package com.marcosmontenegro.model;
+package com.marcosmontenegro.entity;
 
 import jakarta.persistence.*;
 

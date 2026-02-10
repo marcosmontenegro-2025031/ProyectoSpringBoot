@@ -1,7 +1,7 @@
 package com.marcosmontenegro.controller;
 
 
-import com.marcosmontenegro.model.Empleado;
+import com.marcosmontenegro.entity.Empleado;
 import com.marcosmontenegro.service.EmpleadoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

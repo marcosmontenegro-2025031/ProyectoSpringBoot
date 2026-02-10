@@ -1,7 +1,7 @@
 package com.marcosmontenegro.repository;
 
 
-import com.marcosmontenegro.model.Empleado;
+import com.marcosmontenegro.entity.Empleado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

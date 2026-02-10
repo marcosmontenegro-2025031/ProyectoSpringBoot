@@ -1,6 +1,6 @@
 package com.marcosmontenegro.service;
 
-import com.marcosmontenegro.model.Empleado;
+import com.marcosmontenegro.entity.Empleado;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
