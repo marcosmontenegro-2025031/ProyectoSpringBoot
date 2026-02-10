@@ -57,7 +57,7 @@ references Repuestos(id_repuesto) on delete cascade
 delimiter $$
 create procedure sp_empleados_create(
 	in p_nombre varchar(60),
-    in p_apellidon varchar(60),
+    in p_apellido varchar(60),
     in p_puesto varchar(20),
     in p_email varchar(100)
 )
