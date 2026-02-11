@@ -32,20 +32,20 @@ public class EmpleadoController {
         try {
          Empleado createdEmpleado = empleadoService.saveEmpleado(empleado);
          return new ResponseEntity<>(createdEmpleado, HttpStatus.CREATED);
-        }catch (IllegalArgumentException e){
+        }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateEmpleado(@PathVariable Integer id, @RequestBody Empleado empleado) {
+    public ResponseEntity<?> updateEmpleado(Integer id, @RequestBody Empleado empleado) {
     
         try {
-            Empleado actualizado = empleadoService.updateEmpleado(id, empleado);
-            return ResponseEntity.ok(actualizado);
+            Empleado updatEmpleado = empleadoService.updateEmpleado(id, empleado);
+            return new ResponseEntity<>(updatEmpleado, HttpStatus.OK);
 
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
 
     }
@@ -57,8 +57,7 @@ public class EmpleadoController {
             empleadoService.deleteEmpleado(id);
             return ResponseEntity.ok("Empleado Eliminado Correctamente");
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-            .body(e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 

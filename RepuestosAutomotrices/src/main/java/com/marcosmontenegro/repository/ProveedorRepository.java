@@ -7,7 +7,7 @@ public interface ProveedorRepository extends JpaRepository<Proveedor, Integer> {
 
     boolean existsByNombreProveedorAndTelefonoProveedorAndDireccionProveedorAndEmailProveedor(
 
-            String nombreEmpleado ,
+            String nombreProvedor ,
             Integer telefonoProveedor,
             String direccionProveedor,
             String emailProveedor
