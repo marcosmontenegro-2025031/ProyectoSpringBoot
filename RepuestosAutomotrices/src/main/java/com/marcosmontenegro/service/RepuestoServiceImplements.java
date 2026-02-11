@@ -49,7 +49,7 @@ public class RepuestoServiceImplements implements RepuestoService{
         try {
             return repuestoRepository.save(repuesto);
         }catch (RuntimeException e){
-            throw new RuntimeException()e.getMessage();
+            throw new RuntimeException(e.getMessage());
         }
     }
 
