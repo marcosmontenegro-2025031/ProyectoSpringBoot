@@ -38,7 +38,7 @@ public class EmpleadoServiceImplements implements EmpleadoService{
                 throw new IllegalArgumentException("El correo electronico debe tener un dominio como @gmail.com, @yahoo.com, @outlook.com, @icloud.com y @hotmail.com");
             }
 
-            if (empleadoRepository.existsByNombreProveedorAndTelefonoProveedorAndDireccionProveedorAndEmailProveedor(
+            if (empleadoRepository.existsByNombreEmpleadoAndApellidoEmpleadoAndPuestoEmpleadoAndEmailEmpleado(
                     empleado.getNombreEmpleado() ,
                     empleado.getApellidoEmpleado(),
                     empleado.getPuestoEmpleado(),
