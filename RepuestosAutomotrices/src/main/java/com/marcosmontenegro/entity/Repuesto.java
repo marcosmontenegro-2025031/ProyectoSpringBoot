@@ -18,6 +18,7 @@ public class Repuesto {
     @Column(name = "categoria_repuesto")
     private String categoriaRepuesto;
 
+
     @Column(name = "precio_compra")
     private Double precioCompra;
 
