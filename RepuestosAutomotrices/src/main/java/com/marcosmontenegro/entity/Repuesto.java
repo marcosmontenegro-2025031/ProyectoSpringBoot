@@ -19,10 +19,10 @@ public class Repuesto {
     private String categoriaRepuesto;
 
     @Column(name = "precio_compra")
-    private double precioCompra;
+    private Double precioCompra;
 
     @Column(name = "precio_venta")
-    private double precioVenta;
+    private Double precioVenta;
 
     @ManyToOne
     @JoinColumn(name = "id_proveedor")
@@ -55,19 +55,19 @@ public class Repuesto {
         this.categoriaRepuesto = categoriaRepuesto;
     }
 
-    public double getPrecioCompra() {
+    public Double getPrecioCompra() {
         return precioCompra;
     }
 
-    public void setPrecioCompra(double precioCompra) {
+    public void setPrecioCompra(Double precioCompra) {
         this.precioCompra = precioCompra;
     }
 
-    public double getPrecioVenta() {
+    public Double getPrecioVenta() {
         return precioVenta;
     }
 
-    public void setPrecioVenta(double precioVenta) {
+    public void setPrecioVenta(Double precioVenta) {
         this.precioVenta = precioVenta;
     }
 
