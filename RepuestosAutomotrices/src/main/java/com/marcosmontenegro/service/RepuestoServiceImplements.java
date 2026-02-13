@@ -23,34 +23,45 @@ public class RepuestoServiceImplements implements RepuestoService{
     public Repuesto getRepuestoById(Integer id) {return repuestoRepository.findById(id).orElse(null);}
 
     @Override
-    public Repuesto saveRepuesto(Repuesto repuesto) throws RuntimeException {
-        try {
-            if (repuesto == null || repuesto.getNombreRepuesto().isBlank() || repuesto.getCategoriaRepuesto().isBlank() || repuesto.getPrecioCompra() == null || repuesto.getPrecioVenta() == null || repuesto.getProveedor() == null){
-                    throw new IllegalArgumentException("Todos los campos son obligatorios");
-            }
+    public Repuesto saveRepuesto(Repuesto repuesto) {
 
-            if (repuestoRepository.existsByNombreRepuestoAndCategoriaRepuestoAndPrecioCompraAndPrecioVentaAndProveedor(
-                    repuesto.getNombreRepuesto(),
-                    repuesto.getCategoriaRepuesto(),
-                    repuesto.getPrecioCompra(),
-                    repuesto.getPrecioVenta(),
-                    repuesto.getProveedor()
-            )){
-                throw new RuntimeException("El repuesto ya existe");
-            }
-            return repuestoRepository.save(repuesto);
-        }catch (Exception e){
-            throw new RuntimeException(e.getMessage());
+        if (repuesto == null) {
+        throw new RuntimeException("El repuesto no puede ser null");
         }
+
+        if (repuesto.getNombreRepuesto() == null || repuesto.getNombreRepuesto().isBlank()) {
+            throw new RuntimeException("El nombre es obligatorio");
+         }
+
+        if (repuesto.getCategoriaRepuesto() == null || repuesto.getCategoriaRepuesto().isBlank()) {
+             throw new RuntimeException("La categoría es obligatoria");
+        }
+
+        if (repuesto.getPrecioCompra() == null) {
+            throw new RuntimeException("El precio compra es obligatorio");
+        }
+
+        if (repuesto.getPrecioVenta() == null) {
+         throw new RuntimeException("El precio venta es obligatorio");
+        }
+
+        if (repuesto.getIdProveedor() == null) {
+            throw new RuntimeException("El proveedor es obligatorio");
+        }
+
+        return repuestoRepository.save(repuesto);
     }
 
     @Override
     public Repuesto updateRepuesto(Integer id, Repuesto repuesto) {
-        try {
-            return repuestoRepository.save(repuesto);
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
+
+    if (!repuestoRepository.existsById(id)) {
+        throw new RuntimeException("El repuesto no existe");
+    }
+
+    repuesto.setIdRepuesto(id);
+
+    return repuestoRepository.save(repuesto);
     }
 
     @Override
