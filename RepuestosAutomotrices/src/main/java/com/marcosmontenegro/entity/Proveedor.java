@@ -24,9 +24,6 @@ public class Proveedor {
     @Column(name = "email_proveedor")
     private String emailProveedor;
 
-    // GETTERS AND SETTERS
-
-
     public Integer getIdProveedor() {
         return idProveedor;
     }
@@ -39,8 +36,8 @@ public class Proveedor {
         return nombreProveedor;
     }
 
-    public void setNombreProveedor(String nombreEmpleado) {
-        this.nombreProveedor = nombreEmpleado;
+    public void setNombreProveedor(String nombreProveedor) {
+        this.nombreProveedor = nombreProveedor;
     }
 
     public Integer getTelefonoProveedor() {
@@ -66,4 +63,9 @@ public class Proveedor {
     public void setEmailProveedor(String emailProveedor) {
         this.emailProveedor = emailProveedor;
     }
+
+    // GETTERS AND SETTERS
+
+
+    
 }
