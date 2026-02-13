@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Repuestos")
-
 public class Repuesto {
 
     @Id
@@ -18,19 +17,16 @@ public class Repuesto {
     @Column(name = "categoria_repuesto")
     private String categoriaRepuesto;
 
-
     @Column(name = "precio_compra")
     private Double precioCompra;
 
     @Column(name = "precio_venta")
     private Double precioVenta;
 
-    @ManyToOne
-    @JoinColumn(name = "id_proveedor")
-    private Proveedor proveedor;
+    @Column(name = "id_proveedor")
+    private Integer idProveedor;
 
     // GETTERS AND SETTERS
-
 
     public Integer getIdRepuesto() {
         return idRepuesto;
@@ -72,11 +68,11 @@ public class Repuesto {
         this.precioVenta = precioVenta;
     }
 
-    public Proveedor getProveedor() {
-        return proveedor;
+    public Integer getIdProveedor() {
+        return idProveedor;
     }
 
-    public void setProveedor(Proveedor proveedor) {
-        this.proveedor = proveedor;
+    public void setIdProveedor(Integer idProveedor) {
+        this.idProveedor = idProveedor;
     }
 }
